@@ -1,0 +1,4 @@
+/** Add css rules here for your application. */
+.mainPanel {
+	border: 1px solid #2291c8;
+}

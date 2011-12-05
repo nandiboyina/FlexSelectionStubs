@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/cmmi/!svn/ver/189201/Medassests/POC/UpdatedVersion3/FlexSelectionStubs/war/WEB-INF/lib
+END
+datanucleus-appengine-1.0.9.final.jar
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/cmmi/!svn/ver/189201/Medassests/POC/UpdatedVersion3/FlexSelectionStubs/war/WEB-INF/lib/datanucleus-appengine-1.0.9.final.jar
+END
+jsr107cache-1.1.jar
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/cmmi/!svn/ver/189201/Medassests/POC/UpdatedVersion3/FlexSelectionStubs/war/WEB-INF/lib/jsr107cache-1.1.jar
+END
+jdo2-api-2.3-eb.jar
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/cmmi/!svn/ver/189201/Medassests/POC/UpdatedVersion3/FlexSelectionStubs/war/WEB-INF/lib/jdo2-api-2.3-eb.jar
+END
+appengine-api-1.0-sdk-1.5.5.jar
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/cmmi/!svn/ver/189201/Medassests/POC/UpdatedVersion3/FlexSelectionStubs/war/WEB-INF/lib/appengine-api-1.0-sdk-1.5.5.jar
+END
+geronimo-jpa_3.0_spec-1.1.1.jar
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/cmmi/!svn/ver/189201/Medassests/POC/UpdatedVersion3/FlexSelectionStubs/war/WEB-INF/lib/geronimo-jpa_3.0_spec-1.1.1.jar
+END
+datanucleus-core-1.1.5.jar
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/cmmi/!svn/ver/189201/Medassests/POC/UpdatedVersion3/FlexSelectionStubs/war/WEB-INF/lib/datanucleus-core-1.1.5.jar
+END
+appengine-api-labs-1.5.5.jar
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/cmmi/!svn/ver/189201/Medassests/POC/UpdatedVersion3/FlexSelectionStubs/war/WEB-INF/lib/appengine-api-labs-1.5.5.jar
+END
+datanucleus-jpa-1.1.5.jar
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/cmmi/!svn/ver/189201/Medassests/POC/UpdatedVersion3/FlexSelectionStubs/war/WEB-INF/lib/datanucleus-jpa-1.1.5.jar
+END
+geronimo-jta_1.1_spec-1.1.1.jar
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/cmmi/!svn/ver/189201/Medassests/POC/UpdatedVersion3/FlexSelectionStubs/war/WEB-INF/lib/geronimo-jta_1.1_spec-1.1.1.jar
+END
+appengine-jsr107cache-1.5.5.jar
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/cmmi/!svn/ver/189201/Medassests/POC/UpdatedVersion3/FlexSelectionStubs/war/WEB-INF/lib/appengine-jsr107cache-1.5.5.jar
+END
+gwt-servlet.jar
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/cmmi/!svn/ver/189201/Medassests/POC/UpdatedVersion3/FlexSelectionStubs/war/WEB-INF/lib/gwt-servlet.jar
+END

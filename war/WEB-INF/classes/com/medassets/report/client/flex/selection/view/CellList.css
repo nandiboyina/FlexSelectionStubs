@@ -1,0 +1,39 @@
+.cellListWidget {
+
+/*  border:1px solid #2291CB;*/
+border: 1px solid #2291c8; 
+}
+
+.cellListEvenItem {
+  cursor: pointer;
+  zoom: 1;
+  background:white;
+  border-bottom:0.5px solid black;
+ 
+}
+
+.cellListOddItem {
+  cursor: pointer;
+  zoom: 1;
+   background:white;
+    border-bottom:0.5px solid black;
+ 
+
+}
+
+.cellListKeyboardSelectedItem {
+  background: none;
+}
+
+.cellListSelectedItem {
+	background-color:blue;
+	color:white;
+}
+ /* @sprite .cellListSelectedItem {
+  gwt-image: 'cellListSelectedBackground';
+ 
+  background-color: none;
+  color: none;
+  height: auto;
+  overflow: visible;
+}  */

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+        <!--
+
+        ############################### IMPORTANT! ###############################
+
+        This file is NOT used. Consider it an example. To add a new service/servlet edit the web.xml in Alliance Web src/webapps/WEB-INF
+
+        -->
+
+<web-app version="2.4"
+        xmlns="http://java.sun.com/xml/ns/j2ee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
+            http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+    <servlet>
+        <servlet-name>flexService</servlet-name>
+        <servlet-class>com.medassets.report.server.FlexServiceImpl</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>flexService</servlet-name>
+        <url-pattern>/flexselectionstubs/flexService</url-pattern>
+    </servlet-mapping>
+</web-app>
