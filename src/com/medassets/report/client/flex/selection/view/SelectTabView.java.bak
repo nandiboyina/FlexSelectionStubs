@@ -218,7 +218,6 @@ AndDialog andDialog;
 						INCLUSION_STRING_PREPARATION.append(a);
 						INCLUSION_STRING_PREPARATION.append("   "+leftSideParametersListBox.getItemText(leftSideParametersListBox.getSelectedIndex()));	
 						
-						//method for moving parameters to the rightside list box.
 						moveToRightSideInclusion();
 						
 						
@@ -796,7 +795,6 @@ AndDialog andDialog;
 			super(new TextCell());
 		}
 	}
-	//method implementation for moving parameters to the right side list box when ever click the right move button or ok button in the And/Or dialog panel
 public void moveToRightSideInclusion(){
 	selectedParamCodeRec = " ";
 	rightSideInclusionsTableDataProvider.getList().clear();

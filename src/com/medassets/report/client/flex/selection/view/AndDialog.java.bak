@@ -87,7 +87,16 @@ public class AndDialog extends Composite implements HasText {
 		logic = text;
 	}
 
-
+	/*
+	 * @UiHandler("okButton") void handleClick(ClickEvent e) { SelectTabView
+	 * sel=new SelectTabView();
+	 * sel.rightSideInclusionsTableDataProvider.getList().addAll( new
+	 * ArrayList<String>(sel.rightSideInclusionsStringMap .values()));
+	 * 
+	 * mainPanel.hide();
+	 * 
+	 * }
+	 */
 
 	@UiHandler("cancelButton")
 	void handleClick1(ClickEvent e) {
