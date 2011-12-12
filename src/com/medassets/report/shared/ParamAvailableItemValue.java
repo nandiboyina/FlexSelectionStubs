@@ -13,9 +13,18 @@ public class ParamAvailableItemValue implements IsSerializable {
 
     private String code;
     private String description;
+    private int index;
 
 
-    public String getCode() {
+    public int getIndex() {
+		return index;
+	}
+
+	public void setIndex(int index) {
+		this.index = index;
+	}
+
+	public String getCode() {
         return code;
     }
 

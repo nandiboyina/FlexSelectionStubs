@@ -1,11 +1,11 @@
 K 25
 svn:wc:ra_dav:version-url
-V 100
-/cmmi/!svn/ver/189201/Medassests/POC/UpdatedVersion3/FlexSelectionStubs/war/WEB-INF/classes/META-INF
+V 84
+/cmmi/!svn/ver/189201/Medassests/POC/UpdatedVersion3/FlexSelectionStubs/src/META-INF
 END
 jdoconfig.xml
 K 25
 svn:wc:ra_dav:version-url
-V 114
-/cmmi/!svn/ver/189201/Medassests/POC/UpdatedVersion3/FlexSelectionStubs/war/WEB-INF/classes/META-INF/jdoconfig.xml
+V 98
+/cmmi/!svn/ver/189201/Medassests/POC/UpdatedVersion3/FlexSelectionStubs/src/META-INF/jdoconfig.xml
 END

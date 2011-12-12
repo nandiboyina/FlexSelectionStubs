@@ -1,5 +1,6 @@
 package com.medassets.report.client.flex.selection.presenter;
 
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -10,6 +11,7 @@ import java.util.TreeMap;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.ListBox;
@@ -27,6 +29,8 @@ public class SelectTabPresenter {
 	private final FlexServiceAsync selectTabService = GWT.create(FlexService.class);
 	
 	private ReportItemDTO report;
+	
+	
 
 	public interface MyView {
 		Widget asWidget();
@@ -142,7 +146,7 @@ public class SelectTabPresenter {
 			public void onClick(ClickEvent event) {
 				GWT.log("SelectTabPresenter.addComponentEventsforServiceResults().leftSideParametersListBox_eventBox fired - Begin");
 				int selectedIndex = getView().leftSideParametersListBox_eventBox().getSelectedIndex();
-				selectedParameterKeyName = getView().leftSideParametersListBox_eventBox().getValue(selectedIndex);
+								selectedParameterKeyName = getView().leftSideParametersListBox_eventBox().getValue(selectedIndex);
 				getView().manipulateViewControls();
 				fetchPrameterCodeList();
 				GWT.log("SelectTabPresenter.addComponentEventsforServiceResults().leftSideParametersListBox_eventBox fired - End");
@@ -194,15 +198,21 @@ public class SelectTabPresenter {
 		// Add the data to the data provider, which automatically pushes it to the
 	    // widget.
 	    List<ParamAvailableItemValue> list = getView().getLeftSideParamCodesTableDataProviderObj().getList();
-	    
+	   int i=0;
 		for (ParamAvailableItemValue paramCodeObject : paramCodeList) {
 			boolean includedAlready = isCodeIncludedAlready(paramCodeObject);
-			
+			paramCodeObject.setIndex(i);
+			i++;
 			// it disables to add duplicate code into the left panel list
 			if (!includedAlready) {
 				list.add(paramCodeObject);
 			}
+			
+			
+			
 		}
+	  
+	   
 	}
 	
 	/**

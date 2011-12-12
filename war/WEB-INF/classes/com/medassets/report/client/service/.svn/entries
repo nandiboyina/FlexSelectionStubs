@@ -2,7 +2,7 @@
 
 dir
 189306
-http://svn.nisum.com/cmmi/Medassests/POC/UpdatedVersion3/FlexSelectionStubs/war/WEB-INF/classes/com/medassets/report/client/service
+http://svn.nisum.com/cmmi/Medassests/POC/UpdatedVersion3/FlexSelectionStubs/src/com/medassets/report/client/service
 http://svn.nisum.com/cmmi
 
 
@@ -26,18 +26,17 @@ statipalli
 
 9ab356a0-cd87-5e49-a4d6-e154ab4df72c
 
-FlexServiceAsync.class
+FlexService.java
 file
 
 
 
 
-2011-12-05T13:24:00.894869Z
-f0c7270f09709c6c57146a959b3079ae
+2011-12-05T13:23:50.582237Z
+a51dbf984d470ff23d6863a43211d929
 2011-12-02T13:35:45.212625Z
 189201
 statipalli
-has-props
 
 
 
@@ -58,20 +57,20 @@ has-props
 
 
 
-1166
+
+1389
 
-FlexService.class
+FlexServiceAsync.java
 file
 
 
 
 
-2011-12-05T13:24:00.910494Z
-d622718e6a72cb1242ee242976040b9c
+2011-12-05T13:23:50.582237Z
+c4685247c79b31c47b886cd53ff767bf
 2011-12-02T13:35:45.212625Z
 189201
 statipalli
-has-props
 
 
 
@@ -92,5 +91,6 @@ has-props
 
 
 
-1096
+
+892
 
