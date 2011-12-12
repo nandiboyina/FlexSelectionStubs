@@ -118,7 +118,7 @@ public class SelectTabView implements SelectTabPresenter.MyView {
 
 	private String selectedParameterKeyName;
 	String selectedParamCodeRec ="";
-
+AndDialog andDialog;
 	@UiConstructor
 	public SelectTabView() {
 		super();
@@ -190,7 +190,44 @@ public class SelectTabView implements SelectTabPresenter.MyView {
 				selectedParameterKeyName = null;
 			}
 		});
-
+		matchBtn.addClickHandler(new ClickHandler() {
+			
+			@Override
+			public void onClick(ClickEvent event) {
+				new MatchDialog().dialog.center();
+			}
+		});
+		 
+		 
+		andOrBtn.addClickHandler(new ClickHandler() {
+			
+			@Override
+			public void onClick(ClickEvent event) {
+				
+			andDialog= new AndDialog(leftSideParametersListBox.getItemText(leftSideParametersListBox.getSelectedIndex()));
+			andDialog.mainPanel.center();
+			andDialog.okButton.addClickHandler(new ClickHandler() {
+					
+				
+					@Override
+					public void onClick(ClickEvent event) {
+						andDialog.mainPanel.hide();
+						String a=andDialog.getText();
+						
+						INCLUSION_STRING_PREPARATION.setLength(0);
+						INCLUSION_STRING_PREPARATION.append(a);
+						INCLUSION_STRING_PREPARATION.append("   "+leftSideParametersListBox.getItemText(leftSideParametersListBox.getSelectedIndex()));	
+						
+						moveToRightSideInclusion();
+						
+						
+					}
+				});
+				
+				
+			}
+		});
+		
 		leftSideParamCodesRowSelectionModel
 				.addSelectionChangeHandler(new SelectionChangeEvent.Handler() {
 					public void onSelectionChange(SelectionChangeEvent event) {
@@ -208,11 +245,13 @@ public class SelectTabView implements SelectTabPresenter.MyView {
 			 * Move 
 			 */
 			public void onClick(ClickEvent event) {
+				moveToRightSideInclusion();
+			}
 				
-				selectedParamCodeRec = " ";
+				/*selectedParamCodeRec = " ";
 				rightSideInclusionsTableDataProvider.getList().clear();
-				/*ParamAvailableItemValue selectedParamCodeObj = leftSideParamCodesRowSelectionModel
-						.getSelectedObject();*/
+				ParamAvailableItemValue selectedParamCodeObj = leftSideParamCodesRowSelectionModel
+						.getSelectedObject();
 				ParamAvailableItemValue tempCodeDescription = new ParamAvailableItemValue();
 				List<ParamAvailableItemValue> includeList = new ArrayList<ParamAvailableItemValue>();
 				
@@ -272,7 +311,7 @@ public class SelectTabView implements SelectTabPresenter.MyView {
                 	}
 				}
   			
-				/*selectedParamCodeRec = "\n "
+				selectedParamCodeRec = "\n "
 						+ selectedParamCodeObj.getCode() + "  "
 						+ selectedParamCodeObj.getDescription();
 				List<ParamAvailableItemValue> selectedParamObjList = new ArrayList<ParamAvailableItemValue>();
@@ -290,7 +329,7 @@ public class SelectTabView implements SelectTabPresenter.MyView {
 					rightSideInclusionCodeObjectsListMap.get(selectedParameterKeyName).add(selectedParamCodeObj);
 				}
 
-				leftSideParamCodesTableDataProvider.getList().remove(selectedParamCodeObj);*/
+				leftSideParamCodesTableDataProvider.getList().remove(selectedParamCodeObj);
 				//Window.alert("  "+INCLUSION_STRING_PREPARATION.toString()+" test "+ selectedParamCodeRec);
 				rightSideInclusionsStringMap.put(selectedParameterKeyName,INCLUSION_STRING_PREPARATION.toString()+ selectedParamCodeRec);
 				rightSideInclusionCodeObjectsListMap.put(selectedParameterKeyName, selectedParamObjList);
@@ -304,7 +343,7 @@ public class SelectTabView implements SelectTabPresenter.MyView {
 				rightMoveBtn.setEnabled(false);
 			
 			
-			}
+			}*/
 		});
 
 		rightSideInclusionsRowSelectionModel
@@ -756,7 +795,103 @@ public class SelectTabView implements SelectTabPresenter.MyView {
 			super(new TextCell());
 		}
 	}
+public void moveToRightSideInclusion(){
+	selectedParamCodeRec = " ";
+	rightSideInclusionsTableDataProvider.getList().clear();
+	/*ParamAvailableItemValue selectedParamCodeObj = leftSideParamCodesRowSelectionModel
+			.getSelectedObject();*/
+	ParamAvailableItemValue tempCodeDescription = new ParamAvailableItemValue();
+	List<ParamAvailableItemValue> includeList = new ArrayList<ParamAvailableItemValue>();
+	
+	
+	Set<ParamAvailableItemValue> singleRowSet = new HashSet<ParamAvailableItemValue>();
+	List<ParamAvailableItemValue> selectedParamObjList = new ArrayList<ParamAvailableItemValue>();
+	Set<ParamAvailableItemValue> selectedParamCodeObjSet = leftSideParamCodesRowSelectionModel.getSelectedSet();
+	
 
+	List<ParamAvailableItemValue> rightsideSelectionList = new ArrayList<ParamAvailableItemValue>(selectedParamCodeObjSet);
+	if(rightSideInclusionCodeObjectsListMap!= null && rightSideInclusionCodeObjectsListMap.get(selectedParameterKeyName)!=null)
+	{
+		rightsideSelectionList.addAll(rightSideInclusionCodeObjectsListMap.get(selectedParameterKeyName));
+	}
+	
+	getSortedList(rightsideSelectionList);
+	for(int i=0 ;i<rightsideSelectionList.size() ;i++)
+	{
+    	ParamAvailableItemValue selectedParamCodeObj = rightsideSelectionList.get(i);
+    	singleRowSet.add(selectedParamCodeObj);
+    
+		selectedParamObjList.add(selectedParamCodeObj);
+		
+		
+		if(tempCodeDescription.getCode() != null)
+		{
+			if(tempCodeDescription.getIndex()+1== selectedParamCodeObj.getIndex())
+			{
+				singleRowSet.remove(selectedParamCodeObj);
+				singleRowSet.remove(tempCodeDescription);
+				includeSingleSet(singleRowSet);
+				singleRowSet.removeAll(singleRowSet);
+				if(!includeList.contains(tempCodeDescription))
+				{
+					includeList.add(tempCodeDescription);
+				}
+				includeList.add(selectedParamCodeObj);
+			
+			 }
+			else
+			{
+				includerightside(includeList);
+				singleRowSet.add(selectedParamCodeObj);
+				
+			}
+			if(i== rightsideSelectionList.size()-1)
+			{
+				includerightside(includeList);
+				includeSingleSet(singleRowSet);
+			}
+		}
+		tempCodeDescription = selectedParamCodeObj;
+		leftSideParamCodesTableDataProvider.getList().remove(selectedParamCodeObj);
+    	if(rightsideSelectionList.size()==1)
+    	{
+    		includeSingleSet(singleRowSet);
+    	}
+	}
+	
+	/*selectedParamCodeRec = "\n "
+			+ selectedParamCodeObj.getCode() + "  "
+			+ selectedParamCodeObj.getDescription();
+	List<ParamAvailableItemValue> selectedParamObjList = new ArrayList<ParamAvailableItemValue>();
+	selectedParamObjList.add(selectedParamCodeObj);
+	//Window.alert("selectedparam"+selectedParamCodeObj);
+	if (!rightSideInclusionsStringMap.containsKey(selectedParameterKeyName)) 
+	{
+		rightSideInclusionsStringMap.put(selectedParameterKeyName,INCLUSION_STRING_PREPARATION.toString()+ selectedParamCodeRec.toString());
+		rightSideInclusionCodeObjectsListMap.put(selectedParameterKeyName, selectedParamObjList);
+	} 
+	else 
+	{
+		String mergedParamString = rightSideInclusionsStringMap.get(selectedParameterKeyName)+ selectedParamCodeRec.toString();
+		rightSideInclusionsStringMap.put(selectedParameterKeyName,mergedParamString);
+		rightSideInclusionCodeObjectsListMap.get(selectedParameterKeyName).add(selectedParamCodeObj);
+	}
+
+	leftSideParamCodesTableDataProvider.getList().remove(selectedParamCodeObj);*/
+	//Window.alert("  "+INCLUSION_STRING_PREPARATION.toString()+" test "+ selectedParamCodeRec);
+	rightSideInclusionsStringMap.put(selectedParameterKeyName,INCLUSION_STRING_PREPARATION.toString()+ selectedParamCodeRec);
+	rightSideInclusionCodeObjectsListMap.put(selectedParameterKeyName, selectedParamObjList);
+	
+
+	rightSideInclusionsTableDataProvider.getList().clear();
+	
+	rightSideInclusionsTableDataProvider.getList().addAll(new ArrayList<String>(rightSideInclusionsStringMap.values()));
+	
+	
+	rightMoveBtn.setEnabled(false);
+
+
+}
 	
 	
 }

@@ -1,0 +1,67 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" 
+	xmlns:h="urn:import:com.medassets.report.client.flex.selection.view"
+	>
+	
+	<ui:style>
+		.important {
+			font-weight: bold;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+		<g:DialogBox ui:field="dialog" animationEnabled="true"  glassEnabled="true" width="431px" height="344px" >
+		<g:VerticalPanel height="321px" width="386px">
+			<g:HorizontalPanel height="27px" width="356px">
+				<g:Label height="27px"
+					text="Alphanumneric Field Select ByMatching Criteria" />
+			</g:HorizontalPanel>
+			<!-- <h:AndDialog height="146px" />  -->
+				
+			<g:HorizontalPanel width="358px" height="14px">
+				<g:RadioButton ui:field="r1" name= "new name" text="AND" checked="true"/>
+			<g:RadioButton ui:field="r2"   name="new name" text="OR"/>
+			<g:RadioButton ui:field="r3" name="new name" text="AND NOT"/>
+			<g:RadioButton ui:field="r4" name="new name" text="OR NOT" width="154px" height="33px"/>
+			</g:HorizontalPanel> 
+			 <g:Label text="label" width="238px" ui:field="source" /> 
+			
+		
+			<g:HorizontalPanel width="427px" height="20px">
+				<g:RadioButton name="new name" text="Code" />
+				<g:RadioButton name="new name" text="Name" />
+				<g:Label text="that" />
+				<g:ListBox width="150" ui:field="matchList" selectedIndex="1"
+					visibleItemCount="1">
+					<g:item value='1'>
+						matches exactly
+					</g:item>
+					<g:item value='2'>
+						starts with
+					</g:item>
+					<g:item value='3'>
+						ends with
+					</g:item>
+					<g:item value='4'>
+						contains
+					</g:item>
+
+				</g:ListBox>
+			</g:HorizontalPanel>
+			<g:HorizontalPanel width="419px" height="27px">
+				<g:Label text="the character(s)" width="108px" />
+				<g:TextBox text="2" width="206px" height="24px" />
+			</g:HorizontalPanel>
+			<g:HorizontalPanel width="405px" height="10px">
+				<g:CheckBox text="Ignore capitalization" />
+			</g:HorizontalPanel>
+			<g:HorizontalPanel width="416px" height="19px" horizontalAlignment="ALIGN_CENTER">
+				<g:Button text="OK" width="104px" height="30px" ui:field="buttonOk" />
+				<g:Button width="88px" ui:field="buttonCancel">CANCEL</g:Button>
+			</g:HorizontalPanel>
+		</g:VerticalPanel>
+		</g:DialogBox>
+
+
+	</g:HTMLPanel>
+</ui:UiBinder> 

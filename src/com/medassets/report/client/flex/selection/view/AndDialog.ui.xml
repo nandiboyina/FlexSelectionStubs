@@ -1,0 +1,37 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	>
+	<ui:style>
+		.important {
+			font-weight: bold;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+	<g:DialogBox ui:field="mainPanel" animationEnabled="true" modal="true" glassEnabled="true" width="260px" height="155px">
+		
+	<g:VerticalPanel ui:field="verticalPanel" width="331px" height="154px">
+			<!-- <c:AndOrFrame></c:AndOrFrame> -->
+			<g:HorizontalPanel ui:field="hpOne">
+			<g:Label ui:field="title" text="And/Or Operators"/>
+		</g:HorizontalPanel>
+			<g:HorizontalPanel ui:field="hpTwo" width="329px">
+			<g:RadioButton ui:field="r1" name= "new name" text="AND" checked="true"/>
+			<g:RadioButton ui:field="r2"   name="new name" text="OR"/>
+			<g:RadioButton ui:field="r3" name="new name" text="AND NOT"/>
+			<g:RadioButton ui:field="r4" name="new name" text="OR NOT" width="154px" height="33px"/>
+		</g:HorizontalPanel>
+			<g:HorizontalPanel ui:field="hpThree" width="327px" height="37px">
+			<g:Label ui:field="label1" text="New Label" width="161px"/>
+			<g:Label  ui:field="label2" text="New Label" width="164px" height="16px"/>
+		</g:HorizontalPanel>
+		
+		<g:HorizontalPanel  ui:field="hpFour" width="229px" height="44px" horizontalAlignment="ALIGN_CENTER">
+			<g:Button ui:field="okButton" text="OK" width="67px"/>
+			<g:Button ui:field="cancelButton" text="CANCEL" width="70px"/>
+		</g:HorizontalPanel> 
+		</g:VerticalPanel>
+	
+		</g:DialogBox>
+	</g:HTMLPanel>
+</ui:UiBinder> 
