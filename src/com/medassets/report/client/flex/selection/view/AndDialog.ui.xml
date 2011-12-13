@@ -10,7 +10,7 @@
 	<g:HTMLPanel>
 	<g:DialogBox ui:field="mainPanel" animationEnabled="true" modal="true" glassEnabled="true" width="260px" height="155px">
 		
-	<g:VerticalPanel ui:field="verticalPanel" width="331px" height="154px">
+	<g:VerticalPanel ui:field="verticalPanel" width="385px" height="154px">
 			<!-- <c:AndOrFrame></c:AndOrFrame> -->
 			<g:HorizontalPanel ui:field="hpOne">
 			<g:Label ui:field="title" text="And/Or Operators"/>
@@ -21,10 +21,8 @@
 			<g:RadioButton ui:field="r3" name="new name" text="AND NOT"/>
 			<g:RadioButton ui:field="r4" name="new name" text="OR NOT" width="154px" height="33px"/>
 		</g:HorizontalPanel>
-			<g:HorizontalPanel ui:field="hpThree" width="327px" height="37px">
-			<g:Label ui:field="label1" text="New Label" width="161px"/>
-			<g:Label  ui:field="label2" text="New Label" width="164px" height="16px"/>
-		</g:HorizontalPanel>
+			<g:Label text="New Label" ui:field="label1"/>
+			<g:TextBox width="379px" ui:field="textBox1" readOnly="true"/>
 		
 		<g:HorizontalPanel  ui:field="hpFour" width="229px" height="44px" horizontalAlignment="ALIGN_CENTER">
 			<g:Button ui:field="okButton" text="OK" width="67px"/>

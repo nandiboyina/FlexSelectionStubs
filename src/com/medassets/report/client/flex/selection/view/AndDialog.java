@@ -14,6 +14,7 @@ import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RadioButton;
+import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -29,15 +30,9 @@ public class AndDialog extends Composite implements HasText {
 	@UiField
 	HorizontalPanel hpTwo;
 	@UiField
-	HorizontalPanel hpThree;
-	@UiField
 	HorizontalPanel hpFour;
 	@UiField
 	Label title;
-	@UiField
-	Label label1;
-	@UiField
-	Label label2;
 	@UiField
 	Button okButton;
 	@UiField
@@ -52,6 +47,10 @@ public class AndDialog extends Composite implements HasText {
 	RadioButton r3;
 	@UiField
 	RadioButton r4;
+	@UiField Label label1;
+	
+	@UiField TextBox textBox1;
+	
 	String a;
 	private static AndDialogUiBinder uiBinder = GWT
 			.create(AndDialogUiBinder.class);
@@ -68,9 +67,8 @@ public class AndDialog extends Composite implements HasText {
 		Widget local = uiBinder.createAndBindUi(this);
 		a = "All" + text;
 		label1.setText(text);
-		label2.setText("AND" + a + "List");
+		textBox1.setText("AND" + a + "List");
 		initWidget(local);
-
 	}
 
 	String logic;
@@ -87,7 +85,16 @@ public class AndDialog extends Composite implements HasText {
 		logic = text;
 	}
 
-
+	/*
+	 * @UiHandler("okButton") void handleClick(ClickEvent e) { SelectTabView
+	 * sel=new SelectTabView();
+	 * sel.rightSideInclusionsTableDataProvider.getList().addAll( new
+	 * ArrayList<String>(sel.rightSideInclusionsStringMap .values()));
+	 * 
+	 * mainPanel.hide();
+	 * 
+	 * }
+	 */
 
 	@UiHandler("cancelButton")
 	void handleClick1(ClickEvent e) {
@@ -100,10 +107,12 @@ public class AndDialog extends Composite implements HasText {
 	
 	void handleClick2(ClickEvent e) {
 
+		
+
 		label1.setText(a);
 
 		setText("AND");
-		label2.setText(getText() + a + "List");
+		textBox1.setText(getText() + a + "List");
 
 		mainPanel.center();
 
@@ -111,10 +120,12 @@ public class AndDialog extends Composite implements HasText {
 
 	@UiHandler("r2")
 	void handleClick3(ClickEvent e) {
+		
+
 		label1.setText(a);
 
 		setText("OR");
-		label2.setText(getText() + a + "List");
+		textBox1.setText(getText() + a + "List");
 
 		mainPanel.center();
 	
@@ -123,10 +134,12 @@ public class AndDialog extends Composite implements HasText {
 
 	@UiHandler("r3")
 	void handleClick4(ClickEvent e) {
+		
 		label1.setText(a);
-		setText("AND NOT");
 
-		label2.setText(getText() + a + "List");
+		setText("AND NOT");
+		textBox1.setText(getText() + a + "List");
+
 
 		mainPanel.center();
 		
@@ -134,10 +147,11 @@ public class AndDialog extends Composite implements HasText {
 
 	@UiHandler("r4")
 	void handleClick5(ClickEvent e) {
+	
 		label1.setText(a);
 
 		setText("OR NOT");
-		label2.setText(getText() + a + "List");
+		textBox1.setText(getText() + a + "List");
 
 		mainPanel.center();
 		
