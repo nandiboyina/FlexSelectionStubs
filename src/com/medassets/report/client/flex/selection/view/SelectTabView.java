@@ -118,6 +118,8 @@ public class SelectTabView implements SelectTabPresenter.MyView {
 
 	private String selectedParameterKeyName;
 	String selectedParamCodeRec ="";
+	String tempRangeCodeRec = "";
+	String tempSingleCodeRec = "";
 AndDialog andDialog;
 	@UiConstructor
 	public SelectTabView() {
@@ -423,46 +425,7 @@ AndDialog andDialog;
 	}
 
 	
-	private void includerightside(List<ParamAvailableItemValue> includeList)
-	{
-
-		if(includeList.size()>0)
-		{
-			
-			selectedParamCodeRec =selectedParamCodeRec+"\n between includes ("+includeList.size()+") \n "+includeList.get(0).getCode()+"  "+includeList.get(0).getDescription()+
-		" \n"+includeList.get(includeList.size()-1).getCode()+" "+includeList.get(includeList.size()-1).getDescription();
-			
-		includeList.removeAll(includeList);
-		
-		}
-	}
 	
-	private void includeSingleSet(Set<ParamAvailableItemValue> singleSet)
-	{
-		if(singleSet.size()>0){
-			List<ParamAvailableItemValue> templist = new ArrayList<ParamAvailableItemValue>(singleSet);
-			getSortedList(templist);
-			for(int i=0 ;i<templist.size() ;i++)
-			{
-				
-				selectedParamCodeRec = selectedParamCodeRec+"\n "+templist.get(i).getCode()+" "+templist.get(i).getDescription();
-				
-			}
-			
-		}
-	}
-	
-	private void getSortedList(List<ParamAvailableItemValue> list)
-	{
-		Collections.sort(list , new Comparator<ParamAvailableItemValue>()
-				{
-					public int compare(ParamAvailableItemValue obj1, ParamAvailableItemValue obj2) {
-						Integer name = ((ParamAvailableItemValue) obj1).getIndex();
-						Integer name1 = ((ParamAvailableItemValue) obj2).getIndex();
-						return name.compareTo(name1);
-						}
-				});
-	}
 	/**
 	 * 
 	 */
@@ -799,6 +762,8 @@ AndDialog andDialog;
 	//method implementation for moving parameters to the right side list box when ever click the right move button or ok button in the And/Or dialog panel
 public void moveToRightSideInclusion(){
 	selectedParamCodeRec = " ";
+	tempSingleCodeRec = " ";
+	tempRangeCodeRec = " ";
 	rightSideInclusionsTableDataProvider.getList().clear();
 	/*ParamAvailableItemValue selectedParamCodeObj = leftSideParamCodesRowSelectionModel
 			.getSelectedObject();*/
@@ -818,9 +783,20 @@ public void moveToRightSideInclusion(){
 	}
 	
 	getSortedList(rightsideSelectionList);
-	for(int i=0 ;i<rightsideSelectionList.size() ;i++)
+	
+	/**
+	 * below code to remove duplicates from list. converting list to set and again set to list
+	 */
+	Set<ParamAvailableItemValue> myset = new HashSet<ParamAvailableItemValue>();
+	List<ParamAvailableItemValue> result = new ArrayList<ParamAvailableItemValue>();
+	for (ParamAvailableItemValue s : rightsideSelectionList) {
+	  if (myset.add(s)) {
+	    result.add(s);
+	  }
+	}
+	for(int i=0 ;i<result.size() ;i++)
 	{
-    	ParamAvailableItemValue selectedParamCodeObj = rightsideSelectionList.get(i);
+    	ParamAvailableItemValue selectedParamCodeObj = result.get(i);
     	singleRowSet.add(selectedParamCodeObj);
     
 		selectedParamObjList.add(selectedParamCodeObj);
@@ -844,22 +820,19 @@ public void moveToRightSideInclusion(){
 			else
 			{
 				includerightside(includeList);
-				singleRowSet.add(selectedParamCodeObj);
-				
+				//singleRowSet.add(selectedParamCodeObj);
 			}
-			if(i== rightsideSelectionList.size()-1)
-			{
-				includerightside(includeList);
-				includeSingleSet(singleRowSet);
-			}
+			
+			
+		}
+		if(i== result.size()-1)
+		{
+			includeSingleSet(singleRowSet);
+			includerightside(includeList);
 		}
 		tempCodeDescription = selectedParamCodeObj;
 		leftSideParamCodesTableDataProvider.getList().remove(selectedParamCodeObj);
-    	if(rightsideSelectionList.size()==1)
-    	{
-    		includeSingleSet(singleRowSet);
-    	}
-	}
+    }
 	
 	/*selectedParamCodeRec = "\n "
 			+ selectedParamCodeObj.getCode() + "  "
@@ -880,6 +853,8 @@ public void moveToRightSideInclusion(){
 	}
 
 	leftSideParamCodesTableDataProvider.getList().remove(selectedParamCodeObj);*/
+	//Window.alert("single rows"+tempSingleCodeRec);
+	selectedParamCodeRec = tempSingleCodeRec + tempRangeCodeRec ;
 	//Window.alert("  "+INCLUSION_STRING_PREPARATION.toString()+" test "+ selectedParamCodeRec);
 	rightSideInclusionsStringMap.put(selectedParameterKeyName,INCLUSION_STRING_PREPARATION.toString()+ selectedParamCodeRec);
 	rightSideInclusionCodeObjectsListMap.put(selectedParameterKeyName, selectedParamObjList);
@@ -893,6 +868,45 @@ public void moveToRightSideInclusion(){
 	rightMoveBtn.setEnabled(false);
 
 
+}
+
+private void includerightside(List<ParamAvailableItemValue> includeList)
+{
+
+	if(includeList.size()>0)
+	{
+		
+		tempRangeCodeRec =tempRangeCodeRec+"\n between includes ("+includeList.size()+") \n "+includeList.get(0).getCode()+"  "+includeList.get(0).getDescription()+
+	" \n"+includeList.get(includeList.size()-1).getCode()+" "+includeList.get(includeList.size()-1).getDescription();
+		
+	includeList.removeAll(includeList);
+	
+	}
+}
+
+private void includeSingleSet(Set<ParamAvailableItemValue> singleSet)
+{
+	if(singleSet.size()>0){
+		List<ParamAvailableItemValue> templist = new ArrayList<ParamAvailableItemValue>(singleSet);
+		getSortedList(templist);
+		for(int i=0 ;i<templist.size() ;i++)
+		{
+			tempSingleCodeRec = tempSingleCodeRec+"\n "+templist.get(i).getCode()+" "+templist.get(i).getDescription();
+		}
+		
+	}
+}
+
+private void getSortedList(List<ParamAvailableItemValue> list)
+{
+	Collections.sort(list , new Comparator<ParamAvailableItemValue>()
+			{
+				public int compare(ParamAvailableItemValue obj1, ParamAvailableItemValue obj2) {
+					Integer name = ((ParamAvailableItemValue) obj1).getIndex();
+					Integer name1 = ((ParamAvailableItemValue) obj2).getIndex();
+					return name.compareTo(name1);
+					}
+			});
 }
 	
 	
